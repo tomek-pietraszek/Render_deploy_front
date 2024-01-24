@@ -21,7 +21,7 @@ export const addCartItem = async (
    */
     if (itemToUpdate) {
       const response = await axios.patch(
-        `http://localhost:8000/carts/${cartId}`,
+        `https://record-shop-tomek-back.onrender.com/carts/${cartId}`,
         {
           quantity: itemToUpdate.quantity + 1,
           record: record._id,
@@ -32,7 +32,7 @@ export const addCartItem = async (
     }
 
     //! Otherwise submit the new item to the DB
-    const response = await axios.post(`http://localhost:8000/carts/${cartId}`, {
+    const response = await axios.post(`https://record-shop-tomek-back.onrender.com/carts/${cartId}`, {
       record: record._id,
       quantity: 1,
     });
@@ -46,7 +46,7 @@ export const addCartItem = async (
 //! Get all items from the cart
 export const getCartData = async (dispatchCarts, cartId) => {
   try {
-    const response = await axios.get(`http://localhost:8000/carts/${cartId}`);
+    const response = await axios.get(`https://record-shop-tomek-back.onrender.com/carts/${cartId}`);
     dispatchCarts({ type: "GET_CART_DATA", payload: response.data.data });
   } catch (error) {
     console.log(error);
@@ -56,7 +56,7 @@ export const getCartData = async (dispatchCarts, cartId) => {
 //! Delete an item from the cart by its ID
 export const deleteCartItem = async (dispatchCarts, recordId, cartId) => {
   try {
-    await axios.put(`http://localhost:8000/carts/${cartId}`, {
+    await axios.put(`https://record-shop-tomek-back.onrender.com/carts/${cartId}`, {
       record: recordId,
     });
 
