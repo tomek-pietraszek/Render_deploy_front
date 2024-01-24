@@ -5,7 +5,7 @@ axios.defaults.withCredentials = true;
 export const signup = async (dispatchUsers, data) => {
   try {
     const response = await axios.post(
-      "https://record-shop-tomek-back.onrender.com/users/signup",
+      `${process.env.REACT_APP_API}/users/signup`,
       data
     );
 
@@ -18,7 +18,7 @@ export const signup = async (dispatchUsers, data) => {
 export const login = async (dispatchUsers, data) => {
   try {
     const response = await axios.post(
-      "https://record-shop-tomek-back.onrender.com/users/login",
+      `${process.env.REACT_APP_API}/users/login`,
       data
     );
 
@@ -30,7 +30,7 @@ export const login = async (dispatchUsers, data) => {
 
 export const logout = async (dispatchUsers) => {
   try {
-    await axios.get("https://record-shop-tomek-back.onrender.com/users/logout");
+    await axios.get(`${process.env.REACT_APP_API}/users/logout`);
     dispatchUsers({ type: "LOGOUT" });
   } catch (error) {
     console.log(error);
@@ -39,7 +39,7 @@ export const logout = async (dispatchUsers) => {
 
 export const getMyData = async (dispatchUsers) => {
   try {
-    const response = await axios.get("https://record-shop-tomek-back.onrender.com/users/me");
+    const response = await axios.get(`${process.env.REACT_APP_API}/users/me`);
 
     if (response.data && response.data.isAuthenticated) {
       dispatchUsers({ type: "LOGIN_SUCCESS", payload: response.data });

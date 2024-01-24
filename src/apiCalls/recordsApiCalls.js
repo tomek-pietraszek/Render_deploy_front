@@ -2,7 +2,7 @@ import axios from "axios";
 
 const getAllRecords = async (dispatchRecords) => {
   try {
-    const response = await axios.get("https://record-shop-tomek-back.onrender.com/records");
+    const response = await axios.get(`${process.env.REACT_APP_API}/records`);
 
     dispatchRecords({
       type: "FETCH_RECORDS_SUCCESS",
