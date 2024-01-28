@@ -1,6 +1,6 @@
 import "./scss/App.scss";
 import { Routes, Route } from "react-router-dom";
-
+//hello from app.js
 import Nav from "./components/Nav";
 import HomePage from "./components/HomePage";
 import RecordsList from "./components/records/RecordsList";
